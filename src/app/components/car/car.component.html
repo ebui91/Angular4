@@ -1,0 +1,45 @@
+<div class="car-component__container">
+  <h1>Welcome {{ issa370z.name }}!</h1>
+  <button (click)="onClickEdit()">EDIT</button>
+
+  <div *ngIf="showEditModal == true" class="edit-modal__container">
+    <h3>Edit Name</h3>
+
+    <form>
+      <input 
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="issa370z.name"
+        name="name"
+      />
+      <input 
+        type="submit" 
+        (click)="closeModal()"
+        name="Close"
+      />
+    </form>
+  </div>
+
+  <div class="car-info">
+    <p> Make: <span>{{ issa370z.make }}</span></p>
+    <p> Model: <span>{{ issa370z.model }}</span></p>
+    <p> Horsepower: <span>{{ issa370z.hp }}</span></p>
+    <p> Modifications: </p>
+    <div class="mods-container">
+      <ul *ngFor="let mod of issa370z.mods">
+        <li>{{ mod }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="pics__container"
+    *ngFor="let post of posts"
+  >
+    <div class="single-post__container">
+      <h4>{{ post.title }}</h4>
+      <p>Album: <span>{{ post.id }}</span></p>
+      <img src="{{ post.thumbnailUrl }}" />
+    </div>
+  </div>
+</div>
